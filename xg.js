@@ -1,8 +1,8 @@
-window.addEventListener('load', function () {
+window。addEventListener('load'， function () {
     console.log('整个网页包括所有资源都已加载完成！');
     // alert("这是一条消息！");
 });
-$(document).ready(function () {
+$(document)。ready(function () {
     // 等待DOM加载完成后执行
     $('.top1416557911').remove(); // 删除所有类名为top1416557911的div元素
     $('.main00002').remove();
@@ -301,3 +301,66 @@ window.onload = function () {
         }
     }
 };
+// 修复标题与"更多"按钮垂直居中问题
+document.addEventListener('DOMContentLoaded', function() {
+    // 定位环评公示卡片的标题容器
+    const titleContainers = document.querySelectorAll('div[accesskey="531"] div div');
+    titleContainers.forEach(container => {
+        // 为容器添加Flex布局，实现垂直居中
+        container.style.display = 'flex';
+        container.style.alignItems = 'center'; // 垂直居中
+        container.style.justifyContent = 'space-between'; // 标题居左，更多居右
+        container.style.width = '100%'; // 占满宽度
+        container.style.paddingBottom = '10px';
+        container.style.borderBottom = '1px solid #e8f5e9'; // 底部分隔线
+        
+        // 调整标题样式（去除多余margin，确保居中）
+        const title = container.querySelector('.biaoti');
+        if (title) {
+            title.style.marginBottom = '0'; // 清除底部margin，避免影响垂直对齐
+            title.style.fontSize = '18px'; // 稍大一点更协调
+            title.style.padding = '6px 20px'; // 调整内边距
+        }
+        
+        // 调整"更多"按钮样式（垂直居中对齐）
+        const moreBtn = container.querySelector('a[title="环评公示"]');
+        if (moreBtn) {
+            moreBtn.style.margin = '0';
+            moreBtn.style.padding = '4px 8px';
+            moreBtn.style.color = '#158751';
+            moreBtn.style.fontWeight = '500';
+            moreBtn.style.textDecoration = 'none';
+            moreBtn.style.border = '1px solid #158751';
+            moreBtn.style.borderRadius = '4px';
+            moreBtn.style.alignSelf = 'center'; // 强制垂直居中
+            // 添加hover效果
+            moreBtn.onmouseover = () => {
+                moreBtn.style.background = '#158751';
+                moreBtn.style.color = 'white';
+            };
+            moreBtn.onmouseout = () => {
+                moreBtn.style.background = 'transparent';
+                moreBtn.style.color = '#158751';
+            };
+        }
+    });
+
+    // 清理卡片冲突样式（确保背景色统一）
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        // 移除冲突的内联样式，使用Tailwind类定义
+        card.style.backgroundColor = '';
+        card.style.padding = '';
+        card.style.boxShadow = '';
+        card.style.borderRadius = '';
+        // 确保卡片样式统一
+        card.classList.add('bg-white', 'p-6', 'rounded-xl', 'shadow-sm', 'border', 'border-[#e8f5e9]');
+    });
+
+    // 优化链接行高，确保内容居中
+    const linkItems = document.querySelectorAll('.smfz13805316683');
+    linkItems.forEach(item => {
+        item.style.lineHeight = '1.6'; // 合适的行高确保文字垂直居中
+        item.style.padding = '10px 15px'; // 调整内边距
+    });
+});
