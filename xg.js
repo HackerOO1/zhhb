@@ -1,5 +1,5 @@
 // 等待页面所有资源加载完成
-window.addEventListener('load', function () {
+window.addEventListener('load'， function () {
     console.log('整个网页包括所有资源都已加载完成！');
     // alert("这是一条消息！");
 });
@@ -257,3 +257,4 @@ window.onload = function () {
         style.width = '';
     }
 };
+
