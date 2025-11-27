@@ -1,9 +1,3 @@
-// 等待页面所有资源加载完成
-window.addEventListener('load', function () {
-    console.log('整个网页包括所有资源都已加载完成！');
-    // alert("这是一条消息！");
-});
-
 // jQuery 等待DOM加载完成
 $(document).ready(function () {
     // 删除指定类名的元素
@@ -257,6 +251,7 @@ window.onload = function () {
         style.width = '';
     }
 };
+
 
 
 
